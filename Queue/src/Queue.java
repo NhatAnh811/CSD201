@@ -9,7 +9,7 @@ public class Queue {
     }
 
     void clear() {
-        head = null;
+        head = tail = null;
     }
 
     boolean isEmpty() {
@@ -29,9 +29,7 @@ public class Queue {
     }
     // addFirst
     void enqueue(Student x) {
-        Node p = new Node(x); // (1) p.next = null;
-        p.next = head; // (2)
-        head = p;
+        addLast(x);
     }
 
     // removeFirst
@@ -42,6 +40,9 @@ public class Queue {
 
         Node x = head;
         head = head.next;
+        if (head == null) {
+            tail = null;
+        }
         x.next = null;
         return (x.info);
     }
